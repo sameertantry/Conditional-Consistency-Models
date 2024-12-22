@@ -1,0 +1,11 @@
+The current script.py and metrics.py are functional on the LOLv2 real dataset.
+To train and sample the model for LOLv2 synthetic the only change that is needed is the path to the datasets and where the model is being saved.
+Change the dataset paths 
+
+to:
+datasets/LOL-v2/Synthetic
+
+from:
+datasets/LOL-v2/Real_captured
+
+everywhere necessary.
