@@ -18,8 +18,8 @@ import random
 model_path = "checkpoints/lolv2_real/" # Update this path if different
 
 # Dataset paths
-visible_folder = "datasets/LOL-v2/Real_captured/Test/Low/"        # Visible (Low Exposure) images
-infrared_folder = "datasets/LOL-v2/Real_captured/Test/Normal/"  # Infrared (Normal Exposure) images
+visible_folder = "../datasets/LOL-v2/Real_captured/Test/Low/"        # Visible (Low Exposure) images
+infrared_folder = "../datasets/LOL-v2/Real_captured/Test/Normal/"  # Infrared (Normal Exposure) images
 
 # Output directories
 output_folder = "results_lolv2_real"                                      # Directory to save generated images

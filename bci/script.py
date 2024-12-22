@@ -649,7 +649,7 @@ def main():
     logger = TensorBoardLogger("logs", name="bci_icm")
 
     training_config = TrainingConfig(
-        image_dm_config=ImageDataModuleConfig(data_dir="datasets/bci"),
+        image_dm_config=ImageDataModuleConfig(data_dir="../datasets/bci"),
         unet_config=UNetConfig(),
         consistency_training=ImprovedConsistencyTraining(final_timesteps=11),
         consistency_sampling=ConsistencySamplingAndEditing(),

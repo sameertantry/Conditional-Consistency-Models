@@ -715,7 +715,7 @@ def main():
     logger = TensorBoardLogger("logs", name="sid")
 
     training_config = TrainingConfig(
-        image_dm_config=ImageDataModuleConfig(data_dir="dataset/sid"),
+        image_dm_config=ImageDataModuleConfig(data_dir="../datasets/sid"),
         unet_config=UNetConfig(),
         consistency_training=ImprovedConsistencyTraining(final_timesteps=11),
         consistency_sampling=ConsistencySamplingAndEditing(),

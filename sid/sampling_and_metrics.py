@@ -28,7 +28,7 @@ def transform(image):
     return (image * 2) - 1  # Normalize to [-1, 1]
 
 # Paths
-data_dir = "datasets/sid"
+data_dir = "../datasets/sid"
 txt_file = os.path.join(data_dir, "Sony_test_list.txt")  # Use 'Sony_test_list.txt' if available
 output_folder = "results_sid"
 

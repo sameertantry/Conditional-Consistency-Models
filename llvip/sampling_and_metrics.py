@@ -21,8 +21,8 @@ transform = T.Compose([
 ])
 
 # Input data directories for visible and infrared test sets
-visible_folder = "datasets/LLVIP/visible/test/"
-infrared_folder = "datasets/LLVIP/infrared/test/"
+visible_folder = "../datasets/LLVIP/visible/test/"
+infrared_folder = "../datasets/LLVIP/infrared/test/"
 
 # Create the consistency sampling instance for generating images
 consistency_sampling = ConsistencySamplingAndEditing()

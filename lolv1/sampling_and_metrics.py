@@ -18,8 +18,8 @@ import random
 model_path = "checkpoints/lolv1_128x128"  # Update this path if different
 
 # Dataset paths
-visible_folder = "datasets/lolv1/eval15/low/"        # Visible (Low Exposure) images
-infrared_folder = "datasets/lolv1/eval15/high/"   # Infrared (Normal Exposure) images
+visible_folder = "../datasets/lolv1/eval15/low/"        # Visible (Low Exposure) images
+infrared_folder = "../datasets/lolv1/eval15/high/"   # Infrared (Normal Exposure) images
 
 # Output directories
 output_folder = "lolv1_128x128"                                      # Directory to save generated images

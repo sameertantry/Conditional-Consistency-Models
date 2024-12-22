@@ -654,7 +654,7 @@ def main():
     logger = TensorBoardLogger("logs", name="icm")
 
     training_config = TrainingConfig(
-        image_dm_config=ImageDataModuleConfig(data_dir="datasets/LOL-v2/"),
+        image_dm_config=ImageDataModuleConfig(data_dir="../datasets/LOL-v2/"),
         unet_config=UNetConfig(),
         consistency_training=ImprovedConsistencyTraining(final_timesteps=11),
         consistency_sampling=ConsistencySamplingAndEditing(),

@@ -49,8 +49,8 @@ inverse_transform = T.Compose([
 # 3. Define Image Folders
 # -------------------------------
 
-visible_folder = "datasets/bci/HE/test"   # Folder containing visible (HE) images
-infrared_folder = "datasets/bci/IHC/test" # Folder containing infrared (IHC) images
+visible_folder = "../datasets/bci/HE/test"   # Folder containing visible (HE) images
+infrared_folder = "../datasets/bci/IHC/test" # Folder containing infrared (IHC) images
 
 # -------------------------------
 # 4. Sampling Instance and Sigma Schedule
