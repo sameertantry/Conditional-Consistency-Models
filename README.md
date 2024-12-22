@@ -67,11 +67,11 @@ Conditional-Consistency-Models/
 
 Use the links below to download datasets for each model. Once downloaded, extract and place them inside the `datasets/` directory.
 
-- BCI Dataset: [Insert BCI Dataset Link]
-- LLVIP Dataset: [Insert LLVIP Dataset Link]
-- LOLv1 Dataset: [Insert LOLv1 Dataset Link]
-- LOLv2 Dataset: [Insert LOLv2 Dataset Link]
-- SID Dataset: [Insert SID Dataset Link]
+- BCI Dataset: [https://bupt-ai-cz.github.io/BCI/](URL)
+- LLVIP Dataset: [https://drive.google.com/file/d/1VTlT3Y7e1h-Zsne4zahjx5q0TK2ClMVv/view](URL)
+- LOLv1 Dataset: [https://drive.google.com/file/d/1L-kqSQyrmMueBh_ziWoPFhfsAh50h20H/view](URL)
+- LOLv2 Dataset: [https://drive.google.com/file/d/1Ou9EljYZW8o5dbDCf9R34FS8Pd8kEp2U/view](URL)
+- SID Dataset: [https://drive.google.com/drive/folders/1eQ-5Z303sbASEvsgCBSDbhijzLTWQJtR](URL)
 
 ## Pre-trained Model Checkpoints
 
