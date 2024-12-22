@@ -98,7 +98,7 @@ To train a model on a specific dataset, use the corresponding `script.py` inside
 
 For example, to train the BCI model:
 ```bash
-cd bci
+cd ..
 CUDA_VISIBLE_DEVICES=0 python -m bci.script
 ```
 
@@ -108,7 +108,7 @@ To evaluate the model and calculate PSNR/SSIM metrics, use the `sampling_and_met
 
 Example: Evaluate the BCI model:
 ```bash
-cd bci
+cd ..
 CUDA_VISIBLE_DEVICES=0 python -m bci.sampling_and_metric
 ```
 
