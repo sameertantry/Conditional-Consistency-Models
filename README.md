@@ -2,7 +2,7 @@
 
 Welcome to the official repository for Conditional Consistency Models (CCM). This repository hosts the implementation and evaluation of consistency models tailored for various datasets, including **BCI**, **LLVIP**, **LOLv1**, **LOLv2**, and **SID**.
 
-This repository contains code for training and evaluating models, as well as pre-trained model weights and metrics calculation scripts.
+This repository contains code for training and evaluating models.
 
 ## Table of Contents
 
@@ -34,13 +34,6 @@ Install all required Python packages:
 pip install -r requirements.txt
 ```
 
-### 4. Install Additional Tools
-Make sure you have git-lfs installed to handle large files (if applicable):
-```bash
-conda install -c conda-forge git-lfs
-git lfs install
-```
-
 ## Directory Structure
 
 Ensure your project directory is organized as follows:
@@ -56,13 +49,10 @@ Conditional-Consistency-Models/
     ├── bci/                      # Folder for BCI model scripts and metrics
     │   ├── script.py
     │   ├── sampling_and_metric.py
-    │   ├── checkpoints/          # Pre-trained BCI model weights
+    │   ├── checkpoints/bci/          # Pre-trained BCI model weights
     │       ├── model.json
     │       ├── model.pt
-    ├── llvip/                    # Folder for LLVIP scripts
-    │   ├── script.py
-    │   ├── metrics.py
-    │   ├── checkpoints/
+    ├── llvip/                   
     ├── lolv1/
     ├── lolv2/
     ├── sid/
@@ -73,7 +63,7 @@ Conditional-Consistency-Models/
 
 ## Datasets
 
-### 1. Download Datasets
+### Download Datasets
 
 Use the links below to download datasets for each model. Once downloaded, extract and place them inside the `datasets/` directory.
 
@@ -82,54 +72,6 @@ Use the links below to download datasets for each model. Once downloaded, extrac
 - LOLv1 Dataset: [Insert LOLv1 Dataset Link]
 - LOLv2 Dataset: [Insert LOLv2 Dataset Link]
 - SID Dataset: [Insert SID Dataset Link]
-
-### 2. Dataset Organization
-
-Organize each dataset in the following format:
-
-#### BCI Dataset
-```
-datasets/bci/
-    ├── HE/
-        ├── train/
-        ├── test/
-    ├── IHC/
-        ├── train/
-        ├── test/
-```
-
-#### LLVIP Dataset
-```
-datasets/llvip/
-    ├── visible/
-        ├── train/
-        ├── test/
-    ├── infrared/
-        ├── train/
-        ├── test/
-```
-
-#### LOLv1 Dataset
-```
-datasets/lolv1/
-    ├── eval_new/
-        ├── low/
-        ├── high/
-```
-
-#### LOLv2 Dataset
-```
-datasets/lolv2/
-    ├── train/
-    ├── test/
-```
-
-#### SID Dataset
-```
-datasets/sid/
-    ├── train/
-    ├── test/
-```
 
 ## Pre-trained Model Checkpoints
 
@@ -174,20 +116,6 @@ Ensure the dataset is correctly placed, and pre-trained checkpoints are availabl
 
 ### Results
 
-Evaluation metrics (PSNR, SSIM) and generated images are saved in the corresponding output folder, e.g., `lolv1_final/`.
-
-## Citation
-
-If you find this work useful, please consider citing:
-
-```bibtex
-@article{yourpaper2024,
-    author = {Your Name and Collaborators},
-    title = {Conditional Consistency Models},
-    journal = {Conference Name},
-    year = {2024},
-    url = {https://github.com/your-username/Conditional-Consistency-Models},
-}
-```
+Evaluation metrics (PSNR, SSIM) and generated images are saved in the corresponding output folder.
 
 For any issues, feel free to open an issue on this repository.
