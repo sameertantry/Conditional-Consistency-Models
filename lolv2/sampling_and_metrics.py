@@ -3,7 +3,7 @@ from PIL import Image, ImageOps
 import torchvision.transforms as T
 import torchvision.transforms.functional as TF
 from improved_consistency_model_conditional import ConsistencySamplingAndEditing
-from script import UNet
+from lolv2.script import UNet
 import os
 from skimage.metrics import peak_signal_noise_ratio as calculate_psnr
 from skimage.metrics import structural_similarity as calculate_ssim
