@@ -16,7 +16,6 @@ This repository contains code for training and evaluating models.
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/Conditional-Consistency-Models.git
 cd Conditional-Consistency-Models
 ```
 
