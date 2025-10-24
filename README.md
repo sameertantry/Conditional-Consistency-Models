@@ -1,8 +1,7 @@
 # Conditional Consistency Models
 
-Welcome to the official repository for Conditional Consistency Models (CCM). This repository hosts the implementation and evaluation of consistency models tailored for various datasets, including **IRVI**, **BCI**, **LLVIP**, **LOLv1**, **LOLv2**, and **SID**.
-
-This repository contains code for training and evaluating models.
+This repository contains code for training and evaluating models from paper. It is forked in order to extend its functionality by adding scripts for calculating more descriptive metrics which were used in Project Presentation for NeuroML Course.
+To reproduce results on MIST dataset you should follow extra instructions at the end of this README.
 
 ## Table of Contents
 
@@ -103,3 +102,9 @@ Ensure the dataset is correctly placed, and pre-trained checkpoints are availabl
 Evaluation metrics (PSNR, SSIM) and generated images are saved in the corresponding output folder.
 
 For any issues, feel free to open an issue on this repository.
+
+## Reproducing MIST experiments
+
+1. Download MIST dataset from [https://drive.google.com/drive/folders/146V99Zv1LzoHFYlXvSDhKmflIL-joo6p?usp=sharing](Google Druve).
+2. Unzip it to 'datasets' directory and regroup its inner structure in order to make it same to BCI structure: trainA -> HE/train, trainB -> IHC/train, valA -> HE/test, valB -> IHC/test.
+3. Follow steps above for training on BCI. Check scripts in 'mist' directory and change all the data / checkpoints pathes.
