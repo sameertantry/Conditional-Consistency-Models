@@ -1,5 +1,6 @@
 # Conditional Consistency Models
 
+![Alt text](animation.gif)
 
 This repository contains code for training and evaluating models from paper https://arxiv.org/pdf/2501.01223. It is forked in order to extend its functionality by adding scripts for calculating more descriptive metrics which were used in Project Presentation for NeuroML Course.
 To reproduce results on MIST dataset you should follow extra instructions at the end of this README.
@@ -113,4 +114,3 @@ For any issues, feel free to open an issue on this repository.
 2. Unzip it to 'datasets' directory and regroup its inner structure in order to make it same to BCI structure: trainA -> HE/train, trainB -> IHC/train, valA -> HE/test, valB -> IHC/test.
 3. Follow steps above for training on BCI. Check scripts in 'mist' directory and change all the data / checkpoints pathes.
 
-![Alt text](animation.gif)
