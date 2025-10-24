@@ -1,6 +1,7 @@
 # Conditional Consistency Models
 
-This repository contains code for training and evaluating models from paper. It is forked in order to extend its functionality by adding scripts for calculating more descriptive metrics which were used in Project Presentation for NeuroML Course.
+
+This repository contains code for training and evaluating models from paper https://arxiv.org/pdf/2501.01223. It is forked in order to extend its functionality by adding scripts for calculating more descriptive metrics which were used in Project Presentation for NeuroML Course.
 To reproduce results on MIST dataset you should follow extra instructions at the end of this README.
 
 ## Table of Contents
@@ -85,14 +86,17 @@ cd ..
 CUDA_VISIBLE_DEVICES=0 python -m bci.script
 ```
 
+We used 100000 steps, authors trained the model for ~500000. We logged our losses with clearml tool. s
+
 ### 2. Evaluation (Metrics)
 
 To evaluate the model and calculate PSNR/SSIM metrics, use the `sampling_and_metric.py` script.
 
-Example: Evaluate the BCI model:
+After getting the intermediate checkpoints in .ckpt format, you might need to run these scripts to get images:
 ```bash
 cd ..
-CUDA_VISIBLE_DEVICES=0 python -m bci.sampling_and_metric
+CUDA_VISIBLE_DEVICES=0 python -m bci.make_right_checkpoint
+CUDA_VISIBLE_DEVICES=0 python -m bci.ckpt_sampling_and_metrics
 ```
 
 Ensure the dataset is correctly placed, and pre-trained checkpoints are available before running the evaluation.
@@ -105,6 +109,8 @@ For any issues, feel free to open an issue on this repository.
 
 ## Reproducing MIST experiments
 
-1. Download MIST dataset from [https://drive.google.com/drive/folders/146V99Zv1LzoHFYlXvSDhKmflIL-joo6p?usp=sharing](Google Druve).
+1. Download MIST dataset from [https://drive.google.com/drive/folders/146V99Zv1LzoHFYlXvSDhKmflIL-joo6p?usp=sharing](Google Drive).
 2. Unzip it to 'datasets' directory and regroup its inner structure in order to make it same to BCI structure: trainA -> HE/train, trainB -> IHC/train, valA -> HE/test, valB -> IHC/test.
 3. Follow steps above for training on BCI. Check scripts in 'mist' directory and change all the data / checkpoints pathes.
+
+![Alt text](animation.gif)

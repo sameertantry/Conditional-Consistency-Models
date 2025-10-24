@@ -10,7 +10,10 @@ from einops import rearrange
 from einops.layers.torch import Rearrange
 from lightning import LightningDataModule, LightningModule, Trainer, seed_everything
 from lightning.pytorch.callbacks import LearningRateMonitor
-from lightning.pytorch.loggers import TensorBoardLogger
+# from lightning.pytorch.loggers import TensorBoardLogger
+from clearml import Task
+# from ignite.handlers.clearml_logger import ClearMLLogger
+  
 from matplotlib import pyplot as plt
 from torch import Tensor, nn
 from torch.nn import functional as F
@@ -34,6 +37,82 @@ import os
 from PIL import Image
 import torch
 from lightning.pytorch.callbacks import LearningRateMonitor, ModelCheckpoint
+
+
+from clearml import Task, Logger as ClearMLLogger
+
+class ClearMLLoggerWrapper:
+    """Wrapper to make ClearML Logger compatible with PyTorch Lightning interface."""
+    
+    def __init__(self, task):
+        self.task = task
+        self._logger = task.get_logger()
+        self._step = 0
+    
+    def save(self):
+        """Save/flush current state (ClearML auto-saves, but explicit flush for compatibility)."""
+        # ClearML automatically saves everything, but we can explicitly flush
+        self._logger.flush()
+        # Optionally mark a checkpoint
+        return True
+    
+    def log_metrics(self, metrics, step=None):
+        """Log multiple metrics at once."""
+        iteration = step if step is not None else self._step
+        for key, value in metrics.items():
+            self._logger.report_scalar(
+                title="metrics",
+                series=key,
+                value=value,
+                iteration=iteration
+            )
+        if step is None:
+            self._step += 1
+
+    
+    @property
+    def name(self):
+        """Return the task name."""
+        return self.task.name
+    
+    @property
+    def version(self):
+        """Return the task ID as version."""
+        return self.task.id
+    
+    @property
+    def experiment(self):
+        """Return the task object."""
+        return self.task
+    
+    
+    def finalize(self, status=None):
+        """Finalize the logger (no-op for ClearML, but prevents AttributeError)."""
+        # ClearML handles finalization automatically when task completes
+        pass
+
+    def save_dir(self, status=None):
+        """Finalize the logger (no-op for ClearML, but prevents AttributeError)."""
+        # ClearML handles finalization automatically when task completes
+        pass
+
+    def log_graph(self, status=None):
+        """Finalize the logger (no-op for ClearML, but prevents AttributeError)."""
+        # ClearML handles finalization automatically when task completes
+        pass
+    
+    def __getattr__(self, name):
+        """Delegate other calls to the underlying ClearML logger."""
+        return getattr(self._logger, name)
+
+    def after_save_checkpoint(self, checkpoint_callback):
+        """Called after a model checkpoint has been saved.
+        This is required by PyTorch Lightning's ModelCheckpoint callback.
+        """
+        # ClearML doesn't require special handling after checkpoint save
+        # but we need this method to prevent AttributeError
+        pass
+
 
 class PairedDataset(Dataset):
     def __init__(
@@ -637,29 +716,33 @@ def run_training(config: TrainingConfig) -> None:
 
 # Main function
 def main():
+    torch.cuda.empty_cache()
     # Define the checkpoint callback
     checkpoint_callback = ModelCheckpoint(
         dirpath="checkpoints_bci",
         filename="{epoch}-{step}",
         save_top_k=-1,  # Save all checkpoints
-        every_n_epochs=20,  # Adjust as needed
+        every_n_epochs=10,  # Adjust as needed
     )
 
     # Set up the logger
-    logger = TensorBoardLogger("logs", name="bci_icm")
 
+    task = Task.init(task_name="1000", project_name="consistency")
+    # logger = ClearMLLogger(task=task)
+    logger = ClearMLLoggerWrapper(task)
     training_config = TrainingConfig(
-        image_dm_config=ImageDataModuleConfig(data_dir="../datasets/bci"),
+        image_dm_config=ImageDataModuleConfig(data_dir="./datasets/bci"),
         unet_config=UNetConfig(),
         consistency_training=ImprovedConsistencyTraining(final_timesteps=11),
         consistency_sampling=ConsistencySamplingAndEditing(),
         lit_icm_config=LitImprovedConsistencyModelConfig(
             sample_every_n_steps=2100000, lr_scheduler_iters=1000
         ),
+        
         trainer=Trainer(
-            max_steps=100,
+            max_steps=100000,
             precision="16",
-            log_every_n_steps=10,
+            log_every_n_steps=100,
             logger=logger,
             callbacks=[
                 LearningRateMonitor(logging_interval="step"),
