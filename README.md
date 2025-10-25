@@ -87,7 +87,7 @@ cd ..
 CUDA_VISIBLE_DEVICES=0 python -m bci.script
 ```
 
-We used 100000 steps, authors trained the model for ~500000. We logged our losses with [clearml tool](http://178.170.194.157:8080/projects/23bd28685521418baa718be832316c07/tasks/compare/scalars;ids=1e991b77028b4e0c98cbf0313b63fecb?columns=selected&columns=type&columns=name&columns=tags&columns=status&columns=project.name&columns=users&columns=started&columns=last_update&columns=last_iteration&columns=parent.name&order=-last_update&filter=). 
+We used 100000 steps, authors trained the model for ~500000. We logged our losses with [clearml tool](http://178.170.194.157:8080/projects/23bd28685521418baa718be832316c07/tasks/1e991b77028b4e0c98cbf0313b63fecb/output/log). Our chackpoints as well as out loggs can be found [here](https://drive.google.com/drive/folders/1tYkhmeIFJweGW9OXDIuOGSmq0L4YdQg6?usp=sharing)
 
 ### 2. Evaluation (Metrics)
 
